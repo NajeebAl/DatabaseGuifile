@@ -1,6 +1,7 @@
 package DatabaseGui;
 
 import javax.swing.*;
+import java.util.List;
 
 public class PlaceGUI extends JFrame {
     private JList list1;
@@ -13,7 +14,7 @@ public class PlaceGUI extends JFrame {
     private JButton deleteButton;
 
     private Controller controller;
-    private DefaultListModel<Place>allPlacesListModel;
+    private DefaultListModel<Place> allPlacesListModel;
 
     public JList getList1() {
         return list1;
@@ -23,7 +24,7 @@ public class PlaceGUI extends JFrame {
         this.list1 = list1;
     }
 
-    PlaceGUI(Controller controller){
+    PlaceGUI(Controller controller) {
         this.controller = controller;
         allPlacesListModel = new DefaultListModel<>();
         Placelist.setModel(allPlacesListModel);
@@ -35,7 +36,16 @@ public class PlaceGUI extends JFrame {
     }
 
 
-private void addListeners(){
+    private void addListeners() {
 
-}
+    }
+
+    void selListData(List<Place> data) {
+        allPlacesListModel.clear();
+        if (data != null) {
+            for (Place place : data) {
+                allPlacesListModel.addElement(place);
+            }
+        }
+    }
 }
